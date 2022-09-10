@@ -35,8 +35,7 @@ public class IndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DBUtil.createEntitymManager();
 
-        List<Task> tasks =em.createNamedQuery("getAllTasks", Task.class).getResultList();
-        response.getWriter().append(Integer.valueOf(tasks.size()).toString());
+        List<Task> tasks = em.createNamedQuery("getAllTasks", Task.class).getResultList();
 
         em.close();
 
