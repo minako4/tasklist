@@ -31,7 +31,7 @@ public class EditServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        EntityManager em = DBUtil.createEntitymManager();
+        EntityManager em = DBUtil.createEntityManager();
 
         //該当のIDのタスク1件のみをデータベースから取得
         Task t = em.find(Task.class, Integer.parseInt(request.getParameter("id")));
@@ -45,7 +45,7 @@ public class EditServlet extends HttpServlet {
 
 
         //タスクIDをセッションスコープに登録
-        request.getSession().setAttribute("message_id", t.getId());
+        request.getSession().setAttribute("task_id", t.getId());
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/tasks/edit.jsp");
         rd.forward(request, response);
